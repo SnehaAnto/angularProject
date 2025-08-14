@@ -1,6 +1,9 @@
- import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'filter' })
+@Pipe({
+  name: 'filter',
+  standalone: true
+})
 export class FilterPipe implements PipeTransform {
   transform(array: any[], filterText: string): any[] {
     if (!Array.isArray(array) || !filterText) return array;

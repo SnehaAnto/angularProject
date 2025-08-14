@@ -1,15 +1,23 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { SortPipe } from '../sort.pipe';  
+import { FilterPipe } from '../filter.pipe';
 
 @Component({
   selector: 'app-data-grid',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    SortPipe,
+    FilterPipe
+  ],
   templateUrl: './data-grid.component.html',
   styleUrls: ['./data-grid.component.css']
 })
-
 export class DataGridComponent {
   @Input() data: any[] = [];
-
   filterControl = new FormControl('');
   sortKey: string = '';
   sortAsc: boolean = true;
