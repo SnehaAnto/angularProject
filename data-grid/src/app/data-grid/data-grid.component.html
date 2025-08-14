@@ -1,1 +1,27 @@
-<p>data-grid works!</p>
+<div>
+  <input [formControl]="filterControl" placeholder="Filter..." />
+
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns">
+          <button (click)="sortBy(col)">
+            {{ col }}
+            <span *ngIf="sortKey === col">
+              {{ sortAsc ? '▲' : '▼' }}
+            </span>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data 
+        | filter:filterControl.value 
+        | sort:sortKey:sortAsc">
+        <td *ngFor="let col of columns">
+          {{ row[col] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
