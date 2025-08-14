@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { DataGridComponent } from './data-grid/data-grid.component';
-import { SortPipe } from './sort.pipe';
-import { FilterPipe } from './filter.pipe';
 
 @Component({
   selector: 'app-root',
