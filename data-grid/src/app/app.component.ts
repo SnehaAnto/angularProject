@@ -10,8 +10,8 @@ import { DataGridComponent } from './data-grid/data-grid.component';
 })
 export class AppComponent {
   myDataArray = [
-    { name: 'Alice', age: 30, city: 'New York' },
-    { name: 'Bob', age: 25, city: 'London' },
-    { name: 'Charlie', age: 35, city: 'Paris' }
+    { Name: 'Alice', Age: 30, City: 'New York' },
+    { Name: 'Bob', Age: 25, City: 'London' },
+    { Name: 'Charlie', Age: 35, City: 'Paris' }
   ];
 }
