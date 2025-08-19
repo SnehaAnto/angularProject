@@ -1,17 +1,20 @@
 <h1>Product List</h1>
 <input [(ngModel)]="filterText" placeholder="Filter products" />
-<ul>
+<!-- <ul>
     <li *ngFor="let product of filteredProducts()">{{ product.name }} - {{ product.price}}</li>
     <li *ngIf="filteredProducts().length === 0"> No products found.</li>
-</ul>
+</ul> -->
 
 <!-- using Signals and latest of Angular features like @for -->
-<!-- <ul>
-    @for (product of filteredProducts(); track product.id; let i=$index) {
-        <li>{{i+1}}. {{ product.name }} - {{ product.price }}</li>
+<ul>
+    <!-- @for (product of filteredProducts(); track product.id; let i=$index) { 
+     <li> {{i+1}}. {{ product.name }} - {{ product.price }}</li>
+    } -->
+     @for (product of filteredProducts(); track product.id) {
+        <li>{{product.id}}. {{ product.name }} - {{ product.price }}</li>
     }
 
     @empty {
         <li>No products found.</li>
     }
-</ul> -->
+</ul>
