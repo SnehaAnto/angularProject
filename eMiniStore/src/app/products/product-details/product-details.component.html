@@ -1,0 +1,19 @@
+ <div *ngIf="product">
+      <h2>{{ product.name }}</h2>
+      <p><strong>Price:</strong> ${{ product.price }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+    </div>
+    <div *ngIf="!product">
+      <p>Product not found.</p>
+    </div>
+
+
+<!-- @empty {
+  <p>No product details available.</p>
+}
+
+@if(product) {
+  <h2>{{ product.name }}</h2>
+      <p><strong>Price:</strong> ${{ product.price }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+} -->

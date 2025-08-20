@@ -3,12 +3,13 @@ import { ProductService } from '../../services/product.service';
 import { Product} from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
