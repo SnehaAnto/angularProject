@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/not-found.component';
+import { authGuard } from './auth/auth.guard';
 
 
 export const routes: Routes = [
@@ -8,6 +9,7 @@ export const routes: Routes = [
     {
         path: 'products',
         loadComponent: () => import('./products/product-layout.component').then(m => m.ProductLayoutComponent),
+        canActivate: [authGuard],
         children: [
             {
                 path: '',
@@ -21,10 +23,17 @@ export const routes: Routes = [
         ]
     },
 
+    //Login Page
+    {
+        path:'login',
+        loadComponent: () => import('./auth/login/login.component').then(m => m.LoginComponent)
+    },
+
     //Lazy Loading Cart Page
     {
         path: 'cart',
         loadComponent: () => import('./cart/cart-page.component').then(m => m.CartPageComponent),
+        canActivate: [authGuard]
     },
 
     //Default Route
