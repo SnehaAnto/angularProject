@@ -1,0 +1,63 @@
+<h2>Checkout</h2>
+<p> Please fill out the following details to place an order: </p>
+<form [formGroup] ="checkoutForm"  (ngSubmit) = "onSubmit()">
+    <!-- Name Field -->
+    <div>
+        <label>Name:</label>
+        <input formControlName="name">
+        <div *ngIf="f.name.touched && f.name.invalid">
+            <small *ngIf="f.name.errors?.required"><b>Name is required</b></small>
+            <small *ngIf="f.name.errors?.minlength"><b>Name must be at least 3 characters</b></small>
+        </div>
+    </div>
+
+    <!-- Email Field -->
+    <div>
+        <label>Email:</label>
+        <input formControlName="email">
+        <div *ngIf="f.email.touched && f.email.invalid">
+            <small *ngIf="f.email.errors?.required"><b>Email is required</b></small>
+            <small *ngIf="f.email.errors?.email"><b>Invalid email format</b></small>
+        </div>
+    </div>
+
+    <!-- Address Field -->
+    <div>
+        <label>Address:</label>
+        <input formControlName="address">
+        <div *ngIf="f.address.touched && f.address.invalid">
+            <small *ngIf="f.address.errors?.required"><b>Address is required</b></small>
+            <small *ngIf="f.address.errors?.minlength"><b>Address must be at least 10 characters</b></small>
+        </div>
+    </div>
+
+    <!-- Payment Method Field -->
+    <div>
+        <label>Payment Method:</label>
+        <select formControlName="paymentMethod">
+            <option value="">Select</option>
+            <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
+        </select>
+        <div *ngIf="f.paymentMethod.touched && f.paymentMethod.invalid">
+            <small *ngIf="f.paymentMethod.errors?.required"><b>Payment method is required</b></small>
+        </div>
+    </div>
+
+    <!-- Card Number Field -->
+    <div>
+        <label>Card Number:</label>
+        <input type="text" pattern="[0-9]*" maxlength="16" 
+        inputmode="numeric" formControlName="cardNumber"
+       (input)="onCardNumberInput($event)">
+        <div *ngIf="f.cardNumber.touched && f.cardNumber.invalid">
+            <small *ngIf="f.cardNumber.errors?.required"><b>Card number is required</b></small>
+            <small *ngIf="f.cardNumber.errors?.minlength || f.cardNumber.errors?.maxlength"><b>Card number must be 16 digits</b></small>
+            <small *ngIf="f.cardNumber.errors?.fakeCard"><b>This card number is blocked</b></small>
+            <small *ngIf="f.cardNumber.errors?.pattern"><b>Card number must be numeric</b></small>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" [disabled]="checkoutForm.invalid">Submit</button>
+
+</form>

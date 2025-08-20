@@ -11,6 +11,7 @@ import { Product } from '../../models/product.model';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
+
 export class ProductDetailsComponent {
   product: Product | undefined;
 
@@ -19,7 +20,7 @@ export class ProductDetailsComponent {
     this.product = this.productService.getProducts().find(p => p.id === productId);
   }
 
-  }
+}
 
 
 
