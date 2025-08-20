@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { TruncatePipe } from '../../shared/truncate.pipe';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TruncatePipe],
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })

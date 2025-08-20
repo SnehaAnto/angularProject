@@ -1,9 +1,10 @@
-<h1>Product List</h1>
+<h3>Product List</h3>
 <input [(ngModel)]="filterText" placeholder="Filter products" />
 <ul>
     <li *ngFor="let product of filteredProducts()">
         <a [routerLink] = "['/products', product.id]" appHighlight>
-            {{ product.name }} - {{ product.price}} 
+            <!-- Using Angular's currency pipe -->
+            {{ product.name }} - {{ product.price | currency:'CAD' }} 
         </a> 
         <!-- Add to Cart button -->
         <button (click)="addToCart(product)"> Add to Cart </button>
