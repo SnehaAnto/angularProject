@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { map } from 'rxjs';
+import { HighlightDirective } from '../../shared/highlight.directive';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, HighlightDirective],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })

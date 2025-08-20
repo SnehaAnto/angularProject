@@ -2,7 +2,7 @@
 <input [(ngModel)]="filterText" placeholder="Filter products" />
 <ul>
     <li *ngFor="let product of filteredProducts()">
-        <a [routerLink] = "['/products', product.id]">
+        <a [routerLink] = "['/products', product.id]" appHighlight>
             {{ product.name }} - {{ product.price}} 
         </a> 
         <!-- Add to Cart button -->
