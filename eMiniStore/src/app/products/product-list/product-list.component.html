@@ -5,9 +5,12 @@
         <a [routerLink] = "['/products', product.id]">
             {{ product.name }} - {{ product.price}} 
         </a> 
+        <!-- Add to Cart button -->
+        <button (click)="addToCart(product)"> Add to Cart </button>
     </li>
     <li *ngIf="filteredProducts().length === 0"> No products found.</li>
 </ul>
+
 
 <!-- using Signals and latest of Angular features like @for -->
 <!-- <ul> -->

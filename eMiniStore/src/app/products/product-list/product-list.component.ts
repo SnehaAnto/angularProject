@@ -18,16 +18,26 @@ export class ProductListComponent {
 
   products: Product[] = [];
   filterText = '';
+  cart: Product[] = [];
 
   constructor(private productService: ProductService) {
     this.products =this.productService.getProducts();
+    this.productService.cart$.subscribe(cart => {this.cart = cart
+      console.log('Cart updated:', this.cart);
+    });
   }
 
   filteredProducts(): Product[] {
     return this.products.filter(p => p.name.toLowerCase().includes(this.filterText.toLowerCase()));
   }
 
+  remove(productId: Number) {
+    this.productService.removeFromCart(productId);
+  }
 
+  addToCart(product: Product) {
+    this.productService.addToCart(product);
+  }
 
   //using Signals
   // products = signal<Product[]>([]);

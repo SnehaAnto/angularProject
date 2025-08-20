@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,21 @@ export class ProductService {
     }
   ];
   
+  //Cart state as a BehaviorSubject
+  private cartSubject = new BehaviorSubject<Product[]>([]);
+  cart$ = this.cartSubject.asObservable();
+
   getProducts(): Product[] {
     return this.products;
+  }
+
+  addToCart(product: Product) {
+    const currentCart = this.cartSubject.value;
+    this.cartSubject.next([...currentCart, product]);
+  }
+
+  removeFromCart(productId: Number) {
+    const updatedCart = this.cartSubject.value.filter(p => p.id !== productId);
+    this.cartSubject.next(updatedCart)
   }
 }

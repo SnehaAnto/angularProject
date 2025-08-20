@@ -12,3 +12,13 @@ ul {
 li {
   margin-bottom: 0.5rem;
 }
+
+button {
+  margin-left: 1rem;
+  padding: 0.3rem 0.6rem;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
