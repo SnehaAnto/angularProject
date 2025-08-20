@@ -1,0 +1,15 @@
+nav { 
+    margin-bottom: 1rem;
+}
+
+a { 
+    margin-right: 0.5rem; 
+    text-decoration: bold; 
+    font-weight: bold;
+    color: #007bff; 
+    font-size: large;
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
