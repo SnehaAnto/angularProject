@@ -4,7 +4,7 @@ import { Product} from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -19,12 +19,19 @@ export class ProductListComponent {
   products: Product[] = [];
   filterText = '';
   cart: Product[] = [];
+  cartTotal$: any;
 
   constructor(private productService: ProductService) {
-    this.products =this.productService.getProducts();
-    this.productService.cart$.subscribe(cart => {this.cart = cart
+    this.products = this.productService.getProducts();
+    this.productService.cart$.subscribe(cart => {
+      this.cart = cart;
       console.log('Cart updated:', this.cart);
     });
+    
+    // Cart Total using maps, filters and state sharing
+    this.cartTotal$ = this.productService.cart$.pipe(
+      map(cart => cart.reduce((sum, item) => sum + item.price, 0))
+    );
   }
 
   filteredProducts(): Product[] {
@@ -39,6 +46,7 @@ export class ProductListComponent {
     this.productService.addToCart(product);
   }
 
+}
   //using Signals
   // products = signal<Product[]>([]);
   // filterText = signal('');
@@ -51,7 +59,5 @@ export class ProductListComponent {
   // constructor(private productService: ProductService) {
   //   this.products.set(this.productService.getProducts());
   // }
-
-}
 
 

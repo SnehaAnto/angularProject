@@ -11,6 +11,9 @@
     <li *ngIf="filteredProducts().length === 0"> No products found.</li>
 </ul>
 
+<div>
+  Cart Total: {{ cartTotal$ | async }}
+</div>
 
 <!-- using Signals and latest of Angular features like @for -->
 <!-- <ul> -->
