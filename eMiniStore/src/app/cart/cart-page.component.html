@@ -4,8 +4,8 @@
     <!-- Name Field -->
     <div>
         <label>Name:</label>
-        <input formControlName="name">
-        <div *ngIf="f.name.touched && f.name.invalid">
+        <input formControlName="name" placeholder="Name" aria-label="Name">
+        <div *ngIf="f.name.touched && f.name.invalid" aria-live="polite">
             <small *ngIf="f.name.errors?.required"><b>Name is required</b></small>
             <small *ngIf="f.name.errors?.minlength"><b>Name must be at least 3 characters</b></small>
         </div>
@@ -14,8 +14,8 @@
     <!-- Email Field -->
     <div>
         <label>Email:</label>
-        <input formControlName="email">
-        <div *ngIf="f.email.touched && f.email.invalid">
+        <input formControlName="email" placeholder="Email" aria-label="Email">
+        <div *ngIf="f.email.touched && f.email.invalid" aria-live="polite">
             <small *ngIf="f.email.errors?.required"><b>Email is required</b></small>
             <small *ngIf="f.email.errors?.email"><b>Invalid email format</b></small>
         </div>
@@ -24,8 +24,8 @@
     <!-- Address Field -->
     <div>
         <label>Address:</label>
-        <input formControlName="address">
-        <div *ngIf="f.address.touched && f.address.invalid">
+        <input formControlName="address" placeholder="Address" aria-label="Address">
+        <div *ngIf="f.address.touched && f.address.invalid" aria-live="polite">
             <small *ngIf="f.address.errors?.required"><b>Address is required</b></small>
             <small *ngIf="f.address.errors?.minlength"><b>Address must be at least 10 characters</b></small>
         </div>
@@ -34,11 +34,11 @@
     <!-- Payment Method Field -->
     <div>
         <label>Payment Method:</label>
-        <select formControlName="paymentMethod">
+        <select formControlName="paymentMethod" aria-label="Payment Method">
             <option value="">Select</option>
             <option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</option>
         </select>
-        <div *ngIf="f.paymentMethod.touched && f.paymentMethod.invalid">
+        <div *ngIf="f.paymentMethod.touched && f.paymentMethod.invalid" aria-live="polite">
             <small *ngIf="f.paymentMethod.errors?.required"><b>Payment method is required</b></small>
         </div>
     </div>
@@ -48,8 +48,8 @@
         <label>Card Number:</label>
         <input type="text" pattern="[0-9]*" maxlength="16" 
         inputmode="numeric" formControlName="cardNumber"
-       (input)="onCardNumberInput($event)">
-        <div *ngIf="f.cardNumber.touched && f.cardNumber.invalid">
+       (input)="onCardNumberInput($event)" placeholder="Card Number" aria-label="Card Number">
+        <div *ngIf="f.cardNumber.touched && f.cardNumber.invalid" aria-live="polite">
             <small *ngIf="f.cardNumber.errors?.required"><b>Card number is required</b></small>
             <small *ngIf="f.cardNumber.errors?.minlength || f.cardNumber.errors?.maxlength"><b>Card number must be 16 digits</b></small>
             <small *ngIf="f.cardNumber.errors?.fakeCard"><b>This card number is blocked</b></small>
@@ -58,6 +58,6 @@
     </div>
 
     <!-- Submit button -->
-    <button type="submit" [disabled]="checkoutForm.invalid">Submit</button>
+    <button type="submit" [disabled]="checkoutForm.invalid" aria-pressed="false" aria-label="Submit">Submit</button>
 
 </form>
