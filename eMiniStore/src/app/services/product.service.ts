@@ -13,7 +13,8 @@ export class ProductService {
       id: 1,
       name: 'Phone',
       price: 299,
-      description: 'Smart Phone - Latest version'
+      description: 'Smart Phone - Latest version',
+      img: 'assets/images/phone.jpg'
     },
     {
       id: 2,

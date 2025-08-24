@@ -1,7 +1,8 @@
 <h3>Product List</h3>
-<input [(ngModel)]="filterText" placeholder="Filter products" />
+<input [(ngModel)]="filterText" placeholder="Filter products" name="filter"/>
 <ul>
     <li *ngFor="let product of filteredProducts()">
+        <img *ngIf="product.img" [src]="product.img" [alt]="product.name" width="100" />
         <a [routerLink] = "['/products', product.id]" appHighlight>
             <!-- Using Angular's currency pipe -->
             {{ product.name }} - {{ product.price | currency:'CAD' }} 
